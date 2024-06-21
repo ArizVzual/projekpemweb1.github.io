@@ -1,0 +1,502 @@
+/* batas planet-planet */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  overflow: hidden;
+}
+.container {
+  font-size: 8px;
+  width: 40em;
+  height: 40em;
+  position: absolute;
+}
+img {
+  height: 130%;
+  width: 130%;
+}
+.sun {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 16.3em;
+  left: 16.4em;
+  width: 7.5em;
+  height: 7.5em;
+  border-radius: 50%;
+  box-shadow: 0 0 3em rgb(255, 128, 0);
+  animation: orbit 50s linear infinite;
+  cursor: pointer;
+}
+.mercury,
+.venus,
+.earth,
+.moon,
+.mars,
+.jupiter,
+.saturn,
+.uranus,
+.neptune,
+.pluto {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent;
+  border-width: 0.1em 0.1em 0 0;
+  border-radius: 50%;
+}
+.mercury {
+  top: 12.5em;
+  left: 12.5em;
+  width: 15em;
+  height: 15em;
+  animation: orbit 8.7s linear infinite;
+  cursor: pointer;
+}
+
+.venus {
+  top: 10em;
+  left: 10em;
+  width: 20em;
+  height: 20em;
+  animation: orbit 15.7s linear infinite;
+  cursor: pointer;
+}
+
+.earth {
+  top: 6em;
+  left: 6em;
+  width: 28em;
+  height: 28em;
+  animation: orbit 26.5s linear infinite;
+  cursor: pointer;
+}
+.moon {
+  top: 2em;
+  right: -1em;
+  width: 7em;
+  height: 7em;
+  animation: orbit 2.7s linear infinite;
+}
+.mars {
+  top: 2em;
+  left: 2.5em;
+  width: 36em;
+  height: 36em;
+  animation: orbit 36.5s linear infinite;
+  cursor: pointer;
+}
+.jupiter {
+  top: -2em;
+  left: -2em;
+  width: 45em;
+  height: 45em;
+  animation: orbit 45s linear infinite;
+  cursor: pointer;
+}
+.saturn {
+  top: -7em;
+  left: -7em;
+  width: 55em;
+  height: 55em;
+  animation: orbit 57s linear infinite;
+  cursor: pointer;
+}
+.uranus {
+  top: -12em;
+  left: -12em;
+  width: 65em;
+  height: 65em;
+  animation: orbit 69s linear infinite;
+  cursor: pointer;
+}
+.neptune {
+  top: -17em;
+  left: -17em;
+  width: 75em;
+  height: 75em;
+  animation: orbit 75s linear infinite;
+  cursor: pointer;
+}
+.pluto {
+  top: -22em;
+  left: -22em;
+  width: 85em;
+  height: 85em;
+  animation: orbit 88s linear infinite;
+  cursor: pointer;
+}
+
+.mercury::before,
+.venus::before,
+.earth::before,
+.moon::before,
+.mars::before,
+.jupiter::before,
+.saturn::before,
+.uranus::before,
+.neptune::before,
+.pluto::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  animation: orbit 30s linear infinite;
+}
+.mercury::before {
+  top: 1.5em;
+  right: 0.8em;
+  width: 2em;
+  height: 2em;
+  background-image: url("aset/mercury.png");
+  background-size: cover;
+}
+.venus::before {
+  top: 2em;
+  right: 2em;
+  width: 2em;
+  height: 2em;
+  background-image: url("aset/venus.png");
+  background-size: cover;
+}
+.earth::before {
+  top: 3em;
+  right: 0em;
+  width: 5em;
+  height: 5em;
+  background-image: url("aset/earth.png");
+  background-size: cover;
+}
+
+.moon::before {
+  top: 0.8em;
+  right: 0.2em;
+  width: 1.2em;
+  height: 1.2em;
+  background-image: url("aset/moon.png");
+  background-size: cover;
+}
+.mars::before {
+  top: 5em;
+  right: 3em;
+  width: 3em;
+  height: 3em;
+  background-image: url("aset/mars.png");
+  background-size: cover;
+}
+.jupiter::before {
+  top: 6em;
+  right: 3em;
+  width: 5em;
+  height: 5em;
+  background-image: url("aset/jupiter.png");
+  background-size: cover;
+}
+.saturn::before {
+  top: 7.5em;
+  right: 5em;
+  width: 4.5em;
+  height: 4.5em;
+  background-image: url("aset/saturnus.png");
+  background-size: cover;
+}
+.uranus::before {
+  top: 9em;
+  right: 6.5em;
+  width: 4em;
+  height: 4em;
+  background-image: url("aset/uranus.png");
+  background-size: cover;
+}
+.neptune::before {
+  top: 10em;
+  right: 8em;
+  width: 4em;
+  height: 4em;
+  background-image: url("aset/neptune.png");
+  background-size: cover;
+}
+.pluto::before {
+  top: 11em;
+  right: 10em;
+  width: 4em;
+  height: 4em;
+  background-image: url("aset/pluto.png");
+  background-size: cover;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sun {
+  position: absolute;
+  z-index: 99;
+}
+.mercury {
+  position: absolute;
+  z-index: 98;
+}
+.venus {
+  position: absolute;
+  z-index: 97;
+}
+.earth {
+  position: absolute;
+  z-index: 96;
+}
+.mars {
+  position: absolute;
+  z-index: 95;
+}
+.jupiter {
+  position: absolute;
+  z-index: 94;
+}
+.saturn {
+  position: absolute;
+  z-index: 93;
+}
+.uranus {
+  position: absolute;
+  z-index: 92;
+}
+.neptune {
+  position: absolute;
+  z-index: 91;
+}
+.pluto {
+  position: absolute;
+  z-index: 90;
+}
+/* batas planet-planet */
+
+/* batas logo */
+.logo svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logo svg polyline#back {
+  fill: none;
+  stroke: #e81cff89;
+}
+
+.logo svg polyline#front {
+  fill: none;
+  stroke: #00ffff;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 2s linear infinite;
+  animation-delay: 0s;
+}
+
+.logo svg polyline#front2 {
+  fill: none;
+  stroke: #00ffff;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.logo svg {
+  height: 48px;
+  width: 64px;
+  transform-origin: center;
+  animation: scaleLogo 1.5s forwards;
+  margin-left: 1370px;
+  margin-bottom: 600px;
+}
+
+@keyframes scaleLogo {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+/* batas logo */
+/* picikan x */
+.button1 {
+  position: absolute;
+  width: 40px;
+  height: 45px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: -1445px;
+  margin-top: -328px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.button1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 48px;
+  height: 52px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button1::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.button1:hover::after {
+  filter: blur(50px);
+}
+
+.button1:active::before {
+  scale: 0.7;
+}
+
+/* picikan tanda tanya */
+.tanda_tanya {
+  position: absolute;
+  width: 40px;
+  height: 45px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 1410px;
+  margin-top: 610px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.tanda_tanya::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 48px;
+  height: 52px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tanda_tanya::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.tanda_tanya:hover::after {
+  filter: blur(30px);
+}
+
+.tanda_tanya:active::before {
+  scale: 0.7;
+}
+/* kalimat yang ada pada tanda tanya */
+
+.penjelasan {
+  position: absolute;
+  background-color: #000000;
+  height: 510px;
+  width: 510px;
+  z-index: 1000;
+  border-radius: 25px;
+  z-index: 999;
+}
+.kata_kata {
+  margin-right: 500px;
+  position: absolute;
+  z-index: 1000;
+  margin-bottom: 470px;
+}
+
+.penjelasan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 510px;
+  height: 510px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+}
+.hitam {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  background-color: #000000;
+  z-index: 1001;
+  margin-top: 3.5px;
+  margin-left: 3.5px;
+  border-radius: 10px;
+}
+.kalimat {
+  color: aliceblue;
+  font-family: monospace;
+  font-size: larger;
+  font-style: italic;
+  text-align: center;
+  margin-top: 130px;
+}

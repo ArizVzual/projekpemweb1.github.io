@@ -1,0 +1,265 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  z-index: -1;
+}
+/* batas logo */
+.logo svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logo svg polyline#back {
+  fill: none;
+  stroke: #e81cff89;
+}
+
+.logo svg polyline#front {
+  fill: none;
+  stroke: #00ffff;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 2s linear infinite;
+  animation-delay: 0s;
+}
+
+.logo svg polyline#front2 {
+  fill: none;
+  stroke: #00ffff;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.logo svg {
+  height: 48px;
+  width: 64px;
+  transform-origin: center;
+  animation: scaleLogo 1.5s forwards;
+  margin-left: 1370px;
+  margin-bottom: 600px;
+}
+
+@keyframes scaleLogo {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+.button1 {
+  position: absolute;
+  width: 40px;
+  height: 45px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: -1445px;
+  margin-top: -328px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.button1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 48px;
+  height: 52px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button1::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.button1:hover::after {
+  filter: blur(30px);
+}
+
+.button1:active::before {
+  scale: 0.7;
+}
+/* benda langit */
+.venus {
+  width: 300px;
+  position: absolute;
+  margin-top: -196px;
+}
+.container {
+  position: absolute;
+  gap: 70px;
+  display: flex;
+  margin-left: -240px;
+  margin-top: 140px;
+}
+/* penjelasan */
+.penjelasan1,
+.penjelasan2,
+.penjelasan3,
+.penjelasan4 {
+  position: absolute;
+  width: 47px;
+  height: 30px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13.4px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.penjelasan1::before,
+.penjelasan2::before,
+.penjelasan3::before,
+.penjelasan4::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 55px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.penjelasan1::after,
+.penjelasan2::after,
+.penjelasan3::after,
+.penjelasan4::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.penjelasan1:hover::after,
+.penjelasan2:hover::after,
+.penjelasan3:hover::after,
+.penjelasan4:hover::after {
+  filter: blur(50px);
+}
+
+.penjelasan1:active::before,
+.penjelasan2:active::before,
+.penjelasan3:active::before,
+.penjelasan4:active::before {
+  scale: 0.7;
+}
+.penjelasan1 {
+  margin-left: 145px;
+  position: absolute;
+  margin-top: 600px;
+}
+.penjelasan2 {
+  margin-left: 200px;
+  margin-top: 600px;
+}
+.penjelasan3 {
+  margin-left: 255px;
+  margin-top: 600px;
+}
+.penjelasan4 {
+  margin-left: 310px;
+  margin-top: 600px;
+}
+/* kotak materi */
+.tempat,
+.tempat1,
+.tempat2,
+.tempat3 {
+  position: absolute;
+  margin-top: 230px;
+  margin-left: -880px;
+}
+.warna_kotak {
+  width: 908px;
+  height: 508px;
+  background: linear-gradient(-45deg, #e81cff89 0%, #40c9ffc7 100%);
+  position: absolute;
+  border-radius: 10px;
+}
+.latar_hitam {
+  width: 908px;
+  height: 508px;
+  background-color: #000;
+  position: absolute;
+  border-radius: 10px;
+}
+.hitam_utama {
+  background-color: #000;
+  height: 500px;
+  width: 900px;
+  position: absolute;
+  margin-top: 3.5px;
+  margin-left: 3.5px;
+  border-radius: 10px;
+}
+.tulisan {
+  color: #fff;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+  font-style: italic;
+  font-size: larger;
+}
