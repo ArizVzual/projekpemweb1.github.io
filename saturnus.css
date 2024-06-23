@@ -126,7 +126,7 @@ body {
 }
 /* benda langit */
 .saturn {
-  width: 300px;
+  width: 370px;
   position: absolute;
   margin-top: -196px;
 }
@@ -257,9 +257,20 @@ body {
 }
 .tulisan {
   color: #fff;
-  text-align: center;
+  text-align: justify;
   font-family: monospace;
   font-weight: bold;
   font-style: italic;
-  font-size: larger;
+  margin: 17px;
+  font-size: 17.6px;
+}
+ul,
+li {
+  color: #fff;
+  text-align: justify;
+  font-family: monospace;
+  font-weight: bold;
+  font-style: italic;
+  margin: 15px;
+  font-size: 18px;
 }
