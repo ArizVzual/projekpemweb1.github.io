@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manajemen Pengguna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background-color: #f5f7ff;
+            color: #5a5e72;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 16px #14298f26;
+        }
+
+        .user-table, .user-form {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f2ff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-actions {
+            text-align: right;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manajemen Pengguna</h1>
+
+        <div class="user-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <!-- Data pengguna akan ditambahkan di sini -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="user-form">
+            <h2 id="formTitle">Tambah Pengguna Baru</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="userId">ID</label>
+                    <input type="text" id="userId" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Nama</label>
+                    <input type="text" id="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script>
+        // Konfigurasi Firebase
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        let isEditing = false;
+        let editingUserId = null;
+
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userName = document.getElementById('userName').value;
+            const userEmail = document.getElementById('userEmail').value;
+
+            if (isEditing) {
+                // Update pengguna yang ada
+                db.collection('users').doc(editingUserId).update({
+                    name: userName,
+                    email: userEmail
+                }).then(() => {
+                    isEditing = false;
+                    editingUserId = null;
+                    document.getElementById('formTitle').innerText = 'Tambah Pengguna Baru';
+                    document.getElementById('userForm').reset();
+                    loadUsers();
+                });
+            } else {
+                // Tambah pengguna baru
+                db.collection('users').add({
+                    name: userName,
+                    email: userEmail
+                }).then(() => {
+                    document.getElementById('userForm').reset();
+                    loadUsers();
+                });
+            }
+        });
+
+        document.getElementById('cancelEdit').addEventListener('click', function() {
+            isEditing = false;
+            editingUserId = null;
+            document.getElementById('formTitle').innerText = 'Tambah Pengguna Baru';
+            document.getElementById('userForm').reset();
+        });
+
+        function loadUsers() {
+            db.collection('users').get().then(querySnapshot => {
+                const userTableBody = document.getElementById('userTableBody');
+                userTableBody.innerHTML = '';
+                querySnapshot.forEach(doc => {
+                    const user = doc.data();
+                    const userRow = document.createElement('tr');
+                    userRow.innerHTML = `
+                        <td>${doc.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>
+                            <button class="btn btn-edit" onclick="editUser('${doc.id}', '${user.name}', '${user.email}')">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteUser('${doc.id}')">Hapus</button>
+                        </td>
+                    `;
+                    userTableBody.appendChild(userRow);
+                });
+            });
+        }
+
+        function editUser(id, name, email) {
+            isEditing = true;
+            editingUserId = id;
+            document.getElementById('formTitle').innerText = 'Edit Pengguna';
+            document.getElementById('userId').value = id;
+            document.getElementById('userName').value = name;
+            document.getElementById('userEmail').value = email;
+        }
+
+        function deleteUser(id) {
+            db.collection('users').doc(id).delete().then(() => {
+                loadUsers();
+            });
+        }
+
+        loadUsers();
+    </script>
+</body>
+</html>
