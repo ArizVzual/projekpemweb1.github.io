@@ -66,12 +66,6 @@ window.onload = function () {
   gambarNeptune.addEventListener("click", function () {
     window.location.href = "neptunus.html";
   });
-
-  // link sagan pluto, bila diklik pacang masuk ke link
-  const gambarPluto = document.getElementById("gambar_pluto");
-  gambarPluto.addEventListener("click", function () {
-    window.location.href = "";
-  });
 };
 
 // picikan tanda tanya
