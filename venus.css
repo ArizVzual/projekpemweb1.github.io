@@ -257,9 +257,20 @@ body {
 }
 .tulisan {
   color: #fff;
-  text-align: center;
+  text-align: justify;
   font-family: monospace;
   font-weight: bold;
   font-style: italic;
-  font-size: larger;
+  margin: 17px;
+  font-size: 18px;
+}
+ul,
+li {
+  color: #fff;
+  text-align: justify;
+  font-family: monospace;
+  font-weight: bold;
+  font-style: italic;
+  margin: 15px;
+  font-size: 14px;
 }
