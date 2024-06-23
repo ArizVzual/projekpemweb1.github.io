@@ -40,12 +40,11 @@ img {
 .jupiter,
 .saturn,
 .uranus,
-.neptune,
-.pluto {
+.neptune {
   position: absolute;
   border-style: solid;
   border-color: white transparent;
-  border-width: 0.1em 0.1em 0 0;
+  border-width: 0.1em 0.1em 0em 0em;
   border-radius: 50%;
 }
 .mercury {
@@ -121,14 +120,6 @@ img {
   animation: orbit 75s linear infinite;
   cursor: pointer;
 }
-.pluto {
-  top: -22em;
-  left: -22em;
-  width: 85em;
-  height: 85em;
-  animation: orbit 88s linear infinite;
-  cursor: pointer;
-}
 
 .mercury::before,
 .venus::before,
@@ -138,8 +129,7 @@ img {
 .jupiter::before,
 .saturn::before,
 .uranus::before,
-.neptune::before,
-.pluto::before {
+.neptune::before {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -218,14 +208,6 @@ img {
   background-image: url("aset/neptune.png");
   background-size: cover;
 }
-.pluto::before {
-  top: 11em;
-  right: 10em;
-  width: 4em;
-  height: 4em;
-  background-image: url("aset/pluto.png");
-  background-size: cover;
-}
 
 .star {
   position: absolute;
@@ -275,10 +257,7 @@ img {
   position: absolute;
   z-index: 91;
 }
-.pluto {
-  position: absolute;
-  z-index: 90;
-}
+
 /* batas planet-planet */
 
 /* batas logo */
